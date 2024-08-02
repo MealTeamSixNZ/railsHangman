@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_28_071201) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_01_201335) do
   create_table "dictionaries", force: :cascade do |t|
     t.string "word"
     t.integer "difficulty"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_28_071201) do
     t.integer "lives"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gameword"
   end
 
 end
