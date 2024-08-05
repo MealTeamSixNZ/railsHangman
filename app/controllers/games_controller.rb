@@ -5,33 +5,43 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  def new
+    @game = Game.new(lives: 0, guesses: '')
+  end
+
   def show
     @game = Game.find(params[:id])
+    @secret_word = @game.gameword
+    @display_word = @secret_word.chars.map do |letter|
+      @game.guesses.include?(letter) ? letter : '_ '
+    end.join
   end
-
-  def new
-    @game = Game.new(lives: 0, guesses:'')
-  end
-
-  # def update
-  #   @game = Game.find(params[:id])
-  #
-  # end
 
   def update
     @game = Game.find(params[:id])
     @letter = params[:letter]
-    # @game = Game.guesses.push(letter)
+
     if @game.guesses.exclude?(@letter)
-      @game.guesses += @letter
+      @game.guesses << @letter
+    end
+
+    secret_word = @game.gameword
+    updated_word = secret_word.chars.map do |letter|
+      @game.guesses.include?(letter) ? letter : '_ '
+    end.join
+
+    if !secret_word.include?(@letter)
+      @game.lives -= 1
+    end
+
+    if updated_word == secret_word
+      flash[:notice] = 'You have won! GG'
+    elsif @game.lives <= 0
+      flash[:notice] = 'You have lost, better luck next time'
     end
 
     if @game.save
-      if @game.gameword { |letter| @game.gameword.include?(letter)}
-      redirect_to game_path(@game), notice: 'You guessed correctly.'
-      else
-        redirect_to game_path(@game), notice: 'You guessed incorrectly'
-      end
+      redirect_to game_path(@game)
     else
       render :show, status: :bad_request
     end
@@ -51,6 +61,7 @@ class GamesController < ApplicationController
   end
 
   private
+
   def game_params
     params.require(:game).permit(:player, :lives, :guesses)
   end
@@ -68,5 +79,4 @@ class GamesController < ApplicationController
   def set_gameword(difficulty)
     @game.gameword = word_fetcher(difficulty).word
   end
-
 end

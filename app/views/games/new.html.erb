@@ -1,18 +1,20 @@
-<h1>New Game</h1>
+<div align="center">
+  <h1>New Game</h1>
 
-<%= form_with model: @game do |form| %>
-  <div>
-    <%= form.label :player %><br>
-    <%= form.text_field :player %>
-  </div>
+  <%= form_with model: @game do |form| %>
+    <div>
+      <%= form.label :player_name %><br>
+      <%= form.text_field :player %>
+    </div>
 
-  <div>
-    <%= form.label :difficulty %><br>
-    <%= form.select :difficulty, [["Easy", "1"], ["Regular", "2"], ["Hard", "3"]] %>
-<!--    alternative could be using: options_from_collection_for_select(@dictionary, 'id', 'difficulty')-->
-  </div>
+    <div>
+      <%= form.label :difficulty %><br>
+      <%= form.select :difficulty, [["Easy", "1"], ["Regular", "2"], ["Hard", "3"]] %>
+      <!--    alternative could be using: options_from_collection_for_select(@dictionary, 'id', 'difficulty')-->
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
