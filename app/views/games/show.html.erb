@@ -1,4 +1,21 @@
-<h1><%= @game.player %></h1>
+<div align="center">
+  <h1><%= @game.player %></h1>
+  <h3><%= @game.gameword %></h3>
+  <p>Lives left: <%= @game.lives %></p>
+  <p>Guessed letters: <%= @game.guesses %></p>
+</div>
 
-<p><%= @game.guesses %></p>
-<p><%= @game.lives %></p>
+<table>
+  <tr>
+    <% ('A'..'Z').each do |guess| %>
+      <td>
+        <%= form_with url: game_path(@game), method: :put do %>
+          <%= hidden_field_tag :letter, guess %>
+          <%= submit_tag guess, disabled: @game.guesses.include?(guess) %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+</table>
+
+<%#= button_to guess, game_path, method: :patch, action: 'update', class: 'letter-button' %>
