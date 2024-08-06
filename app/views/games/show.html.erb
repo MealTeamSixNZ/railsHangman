@@ -11,7 +11,7 @@
         <td>
           <%= form_with url: game_path(@game), method: :put do %>
             <%= hidden_field_tag :letter, guess %>
-            <%= submit_tag guess, disabled: @game.guesses.include?(guess) || @game.guesses.include?(@game.gameword) || @game.lives <= 0%>
+            <%= submit_tag guess, disabled: @game.guesses.include?(guess) || @game.lives <= 0 || (@game.gameword.chars.uniq - @game.guesses.chars.uniq).empty? %>
           <% end %>
         </td>
       <% end %>
