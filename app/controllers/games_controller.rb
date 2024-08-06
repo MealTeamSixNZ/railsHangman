@@ -12,9 +12,9 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @secret_word = @game.gameword
-    @display_word = @secret_word.chars.map do |letter|
-      @game.guesses.include?(letter) ? letter : '_ '
-    end.join
+    @display_word = get_display_word(@secret_word)
+
+    set_flash
   end
 
   def update
@@ -26,19 +26,11 @@ class GamesController < ApplicationController
     end
 
     secret_word = @game.gameword
-    updated_word = secret_word.chars.map do |letter|
-      @game.guesses.include?(letter) ? letter : '_ '
-    end.join
-
-    if !secret_word.include?(@letter)
+    if !secret_word.include?(@letter) #should this be unless? Finding that confusing.
       @game.lives -= 1
     end
 
-    if updated_word == secret_word
-      flash[:notice] = 'You have won! GG'
-    elsif @game.lives <= 0
-      flash[:notice] = 'You have lost, better luck next time'
-    end
+    set_flash
 
     if @game.save
       redirect_to game_path(@game)
@@ -68,9 +60,9 @@ class GamesController < ApplicationController
 
   def set_lives(difficulty)
     if difficulty == 1
-      @game.lives = 14
+      @game.lives = 13
     elsif difficulty == 2
-      @game.lives = 11
+      @game.lives = 10
     else
       @game.lives = 7
     end
@@ -78,5 +70,38 @@ class GamesController < ApplicationController
 
   def set_gameword(difficulty)
     @game.gameword = word_fetcher(difficulty).word
+  end
+
+  def get_display_word(secret_word)
+    if has_lost
+      secret_word
+    else
+      word_replacer(secret_word)
+    end
+  end
+
+  def word_replacer(secret_word)
+    secret_word.chars.map do |letter|
+      @game.guesses.include?(letter) ? letter : '_ '
+    end.join
+  end
+
+  def has_won
+    secret_word = @game.gameword
+    updated_word = word_replacer(secret_word)
+    updated_word == secret_word
+  end
+  def has_lost
+    @game.lives <= 0
+  end
+
+  def set_flash
+    if has_won
+      flash[:notice] = 'You have won! GG'
+    elsif has_lost
+      flash[:notice] = 'You have lost, better luck next time'
+    else
+      flash[:notice] = ""
+    end
   end
 end

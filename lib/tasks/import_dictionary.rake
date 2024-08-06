@@ -6,8 +6,8 @@ namespace :import do
         word = line.strip.upcase
         difficulty = case word.length
                      when 1..5 then 1 # Easy
-                     when 6..8 then 2 # Regular
-                     else 3         # Hard
+                     when 6..7 then 2 # Regular
+                     else 3           # Hard
                      end
         Dictionary.create!(word: word, difficulty: difficulty)
       end

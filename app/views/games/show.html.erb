@@ -1,5 +1,11 @@
 <div align="center">
   <h1><%= @game.player %></h1>
+  <% image_number = @game.lives %>
+  <% if image_number.between?(0, 13) %>
+    <%= image_tag "#{image_number}.svg" %>
+  <% end %>
+
+
   <h3><%= @display_word %></h3>
   <p>Lives left: <%= @game.lives %></p>
   <p>Guessed letters: <%= @game.guesses %></p>
@@ -18,7 +24,10 @@
     </tr>
   </table>
 
+    <p><%= link_to "Home", games_path %></p>
+
   <% if flash[:notice] %>
     <h1 class="flash"><%= flash[:notice] %></h1>
   <% end %>
+
 </div>
