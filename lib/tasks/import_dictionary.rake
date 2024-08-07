@@ -1,7 +1,7 @@
 namespace :import do
   task dictionary: :environment do
     require 'open-uri'
-    URI.open('/home/flynn/hangman_game/public/dict.txt') do |file|
+    URI.open('public/dict.txt') do |file|
       file.each_line do |line|
         word = line.strip.upcase
         difficulty = case word.length
