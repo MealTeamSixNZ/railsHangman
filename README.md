@@ -1,31 +1,12 @@
-# README
+# Hangman
 
-Run 
-rails db:create
-rails db:migrate
-rails import:dictionary
-rails server
-Play!
+Run
+```rails db:create```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```rails db:migrate```
 
-Things you may want to cover:
+```rails import:dictionary```
 
-* Ruby version
+```rails server```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Go to http://localhost:3000 and play!
