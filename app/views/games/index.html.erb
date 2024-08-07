@@ -1,11 +1,13 @@
+<%= stylesheet_link_tag "/stylesheet" %>
 <div align="center">
   <h1>Hangman Games</h1>
-
   <%= link_to "New Game", new_game_path %>
+  <p></p>
 </div>
-
-<% @games.each do |game| %>
-  <div class="grid">
-    <div class="item"><%= link_to game.player, game %></div>
-  </div>
-<% end %>
+<div class="grid">
+  <% @games.each do |game| %>
+    <div class="item">
+      <%= link_to game.player, game %>
+    </div>
+  <% end %>
+</div>
