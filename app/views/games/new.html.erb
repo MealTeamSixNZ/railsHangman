@@ -16,4 +16,11 @@
       <%= form.submit %>
     </div>
   <% end %>
+
+  <% @game.errors.full_messages_for(:player).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <% @game.errors.full_messages_for(:lives).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
 </div>

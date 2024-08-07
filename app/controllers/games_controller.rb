@@ -40,8 +40,10 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
-    difficulty = Integer(params.require(:game).permit(:difficulty)[:difficulty])
+    game_settings = game_params
+    difficulty = Integer(game_settings[:difficulty])
+    game_settings.delete(:difficulty)
+    @game = Game.new(game_settings)
     set_lives(difficulty)
     set_gameword(difficulty)
 
@@ -55,7 +57,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:player, :lives, :guesses)
+    params.require(:game).permit(:player, :lives, :guesses, :difficulty)
   end
 
   def set_lives(difficulty)
