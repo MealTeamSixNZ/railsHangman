@@ -2,12 +2,10 @@
   <h1>Hangman Games</h1>
 
   <%= link_to "New Game", new_game_path %>
-
-  <ul>
-    <% @games.each do |game| %>
-      <p>
-        <%= link_to game.player, game %>
-      </p>
-    <% end %>
-  </ul>
 </div>
+
+<% @games.each do |game| %>
+  <div class="grid">
+    <div class="item"><%= link_to game.player, game %></div>
+  </div>
+<% end %>

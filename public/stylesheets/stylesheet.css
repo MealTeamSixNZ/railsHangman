@@ -1,0 +1,16 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    max-width: 600px;
+    margin: auto;
+    justify-content: center;
+}
+
+.grid > .item {
+    width: 10rem;
+    height: 6rem;
+    border: 1px solid #000000;
+    border-radius: 16px;
+}

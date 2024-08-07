@@ -26,7 +26,7 @@ class GamesController < ApplicationController
     end
 
     secret_word = @game.gameword
-    if !secret_word.include?(@letter) # Should this be unless? Finding unless statements pretty confusing.
+    unless secret_word.include?(@letter) # Should this be unless? Finding unless statements pretty confusing.
       @game.lives -= 1
     end
 
