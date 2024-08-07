@@ -1,4 +1,4 @@
-# Hangman
+![0](https://github.com/user-attachments/assets/b75f3750-f409-4294-a60e-b4176eb613f3)
 
 Run
 ```rails db:create```
