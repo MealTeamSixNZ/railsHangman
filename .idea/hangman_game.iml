@@ -75,6 +75,7 @@
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.5.0, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.3, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.16.7, asdf: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v1.5.7, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="psych (v5.1.2, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v6.0.1, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v6.4.2, asdf: 3.2.4) [gem]" level="application" />
@@ -96,7 +97,6 @@
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.23.0, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.5.1, asdf: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.7.3, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.3, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.1, asdf: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="strscan (v3.1.0, asdf: 3.2.4) [gem]" level="application" />
